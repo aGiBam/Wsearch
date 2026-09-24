@@ -11,4 +11,9 @@ import { PageList } from './page-list/page-list';
 })
 export class App {
   protected readonly title = signal('wsearch');
+
+
+  onTerm(term: string) {
+    console.log("I'm app: Term submitted:", term);
+  }
 }

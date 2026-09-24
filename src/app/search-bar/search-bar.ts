@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './search-bar.html',
 })
 export class SearchBar {
+  @Output() submitted = new EventEmitter<string>();
   term = '';
 
   // onInput(value: string) {
@@ -16,6 +17,7 @@ export class SearchBar {
 
   onFormSubmit(event: Event) {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log('Form submitted with term:', this.term);
+    // console.log('Form submitted with term:', this.term);
+    this.submitted.emit(this.term); // Emit the term to the parent component
   }
 }
