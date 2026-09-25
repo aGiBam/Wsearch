@@ -1,10 +1,19 @@
-import { Inject, Service } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Service()
 export class Wikipedia {
-  private http = Inject(HttpClient);
+  private http = inject(HttpClient);
 
   public search(term: string) {
-    return this.http.get(`https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srsearch=${term}`);
+    return this.http.get('https://en.wikipedia.org/w/api.php', {
+      params: {
+        action: 'query',
+        format: 'json',
+        list: 'search',
+        utf8: '1',
+        srsearch: term,
+        origin: '*',
+      },
+    });
   }
 }
