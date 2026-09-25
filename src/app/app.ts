@@ -10,11 +10,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.scss'
 })
 export class App {
+  pages = [];
+
   constructor(private wikipediaService: Wikipedia) {}
 
   onTerm(term: string) {
     this.wikipediaService.search(term).subscribe((response: any) => {
-      console.log(response.query.search);
+      this.pages = response.query.search;
     });
   }
 }
