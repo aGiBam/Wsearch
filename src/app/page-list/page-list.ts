@@ -1,4 +1,12 @@
 import { Component, Input } from '@angular/core';
+
+interface WikipediaPage {
+  pageid: number;
+  title: string;
+  wordcount: number;
+  snippet: string;
+}
+
 @Component({
   imports: [],
   selector: 'app-page-list',
@@ -6,5 +14,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './page-list.html',
 })
 export class PageList {
-  @Input() pages = [];
+  @Input() pages: WikipediaPage[] = [];
 }
