@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SearchBar } from './search-bar/search-bar';
 import { PageList } from './page-list/page-list';
-
+import { Wikipedia } from './wikipedia';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, SearchBar, PageList],
@@ -10,10 +10,10 @@ import { PageList } from './page-list/page-list';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('wsearch');
-
+  constructor(private wikipediaService: Wikipedia) {}
 
   onTerm(term: string) {
-    console.log("I'm app: Term submitted:", term);
+    const result = this.wikipediaService.search(term);
+    console.log(result);
   }
 }
