@@ -15,5 +15,5 @@ interface WikipediaPage {
 })
 export class PageList {
   @Input() pages: WikipediaPage[] = [];
-  xss = '<img src="" onerror=alert(123)>';
+  // xss = '<img src="" onerror=alert(123)>';
 }

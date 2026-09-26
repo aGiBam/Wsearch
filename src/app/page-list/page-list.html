@@ -1,20 +1,22 @@
 <div [innerHTML]="xss"></div>
 <!-- {{ pages.length }} -->
 <table class="table is-striped">
-<thead>
-  <tr>
-    <th>Title</th>
-    <th>Word Count</th>
-    <th>Snippet</th>
-  </tr>
-</thead>
-<tbody>
-  @for (page of pages; track page.pageid) {
+  <thead>
     <tr>
-      <td>{{ page.title }}</td>
+      <th>Title</th>
+      <th>Word Count</th>
+      <th>Snippet</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (page of pages; track page.pageid) {
+    <tr>
+      <a [href]=" 'https://en.wikipedia.org/?curid=' + page.pageid" target="_blank">
+        <td>{{ page.title }}</td>
+      </a>
       <td>{{ page.wordcount }}</td>
       <td [innerHTML]="page.snippet"></td>
     </tr>
-  }
-</tbody>
+    }
+  </tbody>
 </table>
